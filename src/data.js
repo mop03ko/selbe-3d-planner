@@ -1,5 +1,5 @@
 export const THEMES = {
-  natural:{name:'Дулаан байгалийн', wall:'#f3eee4',wood:'#b99162',fabric:'#c9c0aa',accent:'#82927c',kitchen:'#e7dfcd',floor:'oak',image:'./inspiration/kitchen-natural.png'},
+  natural:{name:'Рендерийн дулаан өнгө', wall:'#eee5d8',wood:'#856047',fabric:'#e8ddca',accent:'#a56c4d',kitchen:'#d9d0bf',door:'#b99468',floor:'oak',image:'./inspiration/kitchen-natural.png'},
   sage:{name:'Бүдэг ногоон',wall:'#f3f1e9',wood:'#c2a77d',fabric:'#d0cfc4',accent:'#78927b',kitchen:'#829078',floor:'ash',image:'./inspiration/kitchen-sage.png'},
   walnut:{name:'Хушга + шаргал',wall:'#e5ded2',wood:'#775942',fabric:'#b5a391',accent:'#a66f51',kitchen:'#aaa18f',floor:'oak',image:'./inspiration/kitchen-walnut.png'},
 };
