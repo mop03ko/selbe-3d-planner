@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#234f3f" />
-  <meta name="description" content="Сэлбэ гэр бүлийн сууцын 15 өрөө, хэсгийн 3D загвараас үүсэх рендерүүд." />
-  <title>Өрөөний рендерүүд · Сэлбэ</title>
+  <meta name="description" content="Сэлбэ гэр бүлийн сууцын 15 өрөө, хэсгийн бодит мэт интерьерийн зураг. Хоёр давхар, нэг хэв маяг." />
+  <title>Интерьерийн зургууд · Сэлбэ</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <script type="module" src="./src/gallery.js"></script>
 </head>
@@ -19,31 +19,44 @@
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
-      <div>
-        <p class="eyebrow">PDF ТУЛГАЛТ / 2026.09.23</p>
-        <h1 id="page-title">Төлөвлөлтөөс<br /><em>шууд рендер.</em></h1>
-        <p class="intro-copy">Цонх, хаалга, тавилгын нэг загвар.<br />Өрөөний харагдацыг сонгоод PNG зураг татна.</p>
+      <div class="intro-content">
+        <p class="eyebrow">СЭЛБЭ / ИНТЕРЬЕРИЙН ЦУГЛУУЛГА</p>
+        <h1 id="page-title">Таны гэр.<br /><em>Өрөө бүрээр.</em></h1>
+        <p class="intro-copy">Байгалийн гэрэл, дулаан модон өнгө,<br />тухтай орчныг мэдрэх 15 зураг.</p>
+        <div class="collection-summary"><span class="collection-count">15</span><div><strong>өрөө, хэсэг</strong><span>2 давхар · нэг хэв маяг</span></div></div>
       </div>
-      <div class="collection-summary"><span class="collection-count">15</span><div><strong>өрөө, хэсэг</strong><span>2 давхар · нэг хэв маяг</span></div><p>Шинэчилсэн 3D загвараас<br />шууд үүсэх 15 зураг.</p></div>
+      <figure class="hero-image"><img src="./renders/imagegen/living.webp" alt="Зочны өрөөний дулаан өнгөтэй интерьерийн санал" width="1536" height="1024" fetchpriority="high" /><figcaption><span>01 / ЗОЧНЫ ӨРӨӨ</span><span>СЭЛБЭ</span></figcaption></figure>
     </section>
-    <div class="render-options"><label>Төлөвлөлт <select id="layout-choice"><option value="base">PDF-ийн шинэ суурь</option><option value="saved">Миний хадгалсан хувилбар</option></select></label><label>Харагдац <select id="perspective-choice"><option value="inside">Өрөөний дотор</option><option value="3d">Байрлал · дээрээс 3D</option></select></label><a href="./plan-notes.html">Эх зураг ба зөрүү ↗</a></div><div class="gallery-toolbar">
-      <div class="filters" role="group" aria-label="Рендерүүдийг давхраар шүүх">
+    <section class="collection-controls" aria-label="Галерейн тохиргоо">
+      <div class="mode-switch" role="group" aria-label="Зургийн төрөл">
+        <button data-mode="photo" class="active" aria-pressed="true">Интерьерийн зураг</button>
+        <button data-mode="3d" aria-pressed="false">Миний 3D төлөвлөлт</button>
+      </div>
+      <p id="mode-description">Өрөө тус бүрийн материал, гэрэлтүүлэг, уур амьсгалыг нэг зурагт.</p>
+      <div id="live-controls" class="render-options" hidden>
+        <label>Төлөвлөлт <select id="layout-choice"><option value="saved">Миний хадгалсан хувилбар</option><option value="base">Суурь төлөвлөлт</option></select></label>
+        <label>Харагдац <select id="perspective-choice"><option value="inside">Өрөөний дотор</option><option value="3d">Байрлал · дээрээс 3D</option></select></label>
+      </div>
+      <p id="render-status" class="load-error" role="status" hidden></p>
+    </section>
+    <div class="gallery-toolbar">
+      <div class="filters" role="group" aria-label="Зургуудыг давхраар шүүх">
         <button data-floor="all" class="active" aria-pressed="true">Бүгд <span>15</span></button>
         <button data-floor="0" aria-pressed="false">1-р давхар <span>8</span></button>
         <button data-floor="1" aria-pressed="false">2-р давхар <span>7</span></button>
       </div>
       <p id="result-count" role="status" aria-live="polite">15 зураг</p>
     </div>
-    <div id="gallery"><p class="loading-message" role="status">Рендерүүдийг бэлдэж байна…</p></div>
+    <div id="gallery"><p class="loading-message" role="status">Зургуудыг ачаалж байна…</p></div>
     <noscript><p class="load-error">Галерейг үзэхийн тулд хөтөчийн JavaScript-ийг идэвхжүүлнэ үү.</p></noscript>
-    <aside class="concept-note"><span class="note-mark" aria-hidden="true">i</span><p>Зургууд нь сонгосон 3D загвараас үүснэ. I давхрын тавилга БА-1 схемд тулгуурласан; II давхрын тавилга санал болгосон байрлалтай. Эхэд зөрсөн хэмжээсүүдийг «Эх зураг ба зөрүү» хэсэгт тэмдэглэв. Хэмжээс авах CAD зураг биш.</p></aside>
+    <aside class="concept-note"><span class="note-mark" aria-hidden="true">i</span><p>Интерьерийн зургууд нь AI-аар бүтээсэн дизайны санал. Тавилгын байрлалыг 3D төлөвлөлтөд өөрчлөхөд эдгээр зураг шинэчлэгдэхгүй; өөрийн хувилбарыг «Миний 3D төлөвлөлт»-өөс үзнэ. Хэмжээс, цонх, хаалганы мэдээллийг <a href="./plan-notes.html">«Эх зураг ба зөрүү»</a> хэсгээс шалгана.</p></aside>
   </main>
   <footer><span>СЭЛБЭ · ГЭР БҮЛИЙН СУУЦ</span><a href="./">Тавилгын байрлалаа 3D-д турших <span aria-hidden="true">↗</span></a></footer>
-  <dialog id="lightbox" aria-labelledby="render-title">
+  <dialog id="lightbox" aria-labelledby="render-title" aria-describedby="render-description">
     <div class="lightbox-top"><span id="render-counter"></span><button id="close-render" class="icon-button" aria-label="Зургийг хаах" title="Хаах (Esc)">×</button></div>
-    <div class="lightbox-image-wrap"><img id="render-image" alt="" /><p id="image-error" hidden>Зургийг ачаалж чадсангүй. Дахин ачаалаад үзээрэй.</p><button id="previous-render" class="image-nav previous" aria-label="Өмнөх зураг" title="Өмнөх зураг (←)">←</button><button id="next-render" class="image-nav next" aria-label="Дараах зураг" title="Дараах зураг (→)">→</button></div>
+    <div class="lightbox-image-wrap"><img id="render-image" alt="" /><p id="image-loading" role="status" hidden>Зургийг ачаалж байна…</p><p id="image-error" hidden>Зургийг ачаалж чадсангүй. Дахин ачаалаад үзээрэй.</p><button id="previous-render" class="image-nav previous" aria-label="Өмнөх зураг" title="Өмнөх зураг (←)">←</button><button id="next-render" class="image-nav next" aria-label="Дараах зураг" title="Дараах зураг (→)">→</button></div>
     <div class="lightbox-caption"><div><p id="render-meta" class="eyebrow"></p><h2 id="render-title"></h2><p id="render-description"></p></div><a id="download-render" class="download-button" download><span aria-hidden="true">↓</span>Зураг татах</a></div>
   </dialog>
-<div id="render-engine" aria-hidden="true"></div>
+  <div id="render-engine" aria-hidden="true"></div>
 </body>
 </html>
