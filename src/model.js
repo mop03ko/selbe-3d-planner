@@ -1,5 +1,6 @@
-import {ROOMS,CATALOG,THEMES,initialLayout,wallsFor} from './data.js';
-export const STORE_KEY='selbe-layout-v1';
+import {ROOMS,CATALOG,THEMES,initialLayout,wallsFor,PLAN_REVISION} from './data.js';
+export const LEGACY_STORE_KEY='selbe-layout-v1';
+export const STORE_KEY='selbe-layout-v2';
 export function pointInPoly(x,z,poly){
  let inside=false;
  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
@@ -35,7 +36,7 @@ export function itemWarnings(item,layout){
 }
 const hex=/^#[0-9a-f]{6}$/i;
 export function validateLayout(raw){
- if(!raw||raw.version!==1||!Object.hasOwn(THEMES,raw.theme)||!Array.isArray(raw.items)||raw.items.length>250)throw Error('Тохирох Сэлбэ хувилбарын файл биш.');
+ if(!raw||![1,2].includes(raw.version)||!Object.hasOwn(THEMES,raw.theme)||!Array.isArray(raw.items)||raw.items.length>250)throw Error('Тохирох Сэлбэ хувилбарын файл биш.');
  const ids=new Set();const items=raw.items.map(i=>{
   const room=ROOMS.find(r=>r.id===i?.room);
   if(!i||typeof i.id!=='string'||!/^[-\w]{1,80}$/.test(i.id)||ids.has(i.id)||!Object.hasOwn(CATALOG,i.type)||!room||i.floor!==room.floor||typeof i.label!=='string'||i.label.length>80)throw Error('Тавилгын мэдээлэл буруу байна.');
@@ -44,8 +45,8 @@ export function validateLayout(raw){
   if(i.color&&!hex.test(i.color))throw Error('Өнгө буруу байна.');ids.add(i.id);
   return {id:i.id,room:i.room,floor:i.floor,type:i.type,label:i.label,x:i.x,z:i.z,w:i.w,d:i.d,h:i.h,rotation:((i.rotation%360)+360)%360,locked:!!i.locked,...(i.color?{color:i.color}:{})};
  });
- const surfaces={};for(const r of ROOMS){const s=raw.surfaces?.[r.id];if(!s||!hex.test(s.wall)||!['oak','ash','walnut','tile','deck'].includes(s.floor))throw Error('Өрөөний материалын мэдээлэл дутуу.');surfaces[r.id]={wall:s.wall,floor:s.floor};}
- return {version:1,theme:raw.theme,items,surfaces};
+ const surfaces={};for(const r of ROOMS){const s=raw.surfaces?.[r.id];if(!s||!hex.test(s.wall)||!['oak','ash','walnut','tile','deck','resin'].includes(s.floor))throw Error('Өрөөний материалын мэдээлэл дутуу.');surfaces[r.id]={wall:s.wall,floor:s.floor};}
+ return {version:2,planRevision:PLAN_REVISION,theme:raw.theme,items,surfaces};
 }
 export function loadLayout(storage){try{const raw=storage.getItem(STORE_KEY);return raw?validateLayout(JSON.parse(raw)):initialLayout();}catch{return initialLayout();}}
 export class History{
