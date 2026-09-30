@@ -111,7 +111,7 @@
     "legacyDescription": "Төхөөрөмж, хадгалалт, өдөр тутмын арчилгааг эмхэлсэн туслах орон зай.",
     "legacyName": "Техникийн өрөө",
     "images": [
-      "./renders/utility.png"
+      "./renders/imagegen/utility.webp"
     ],
     "credit": "Өмнөх AI концепц"
   },
@@ -163,7 +163,7 @@
     "legacyDescription": "Гэр бүлээрээ хооллож, амрах гадаах террасын зохион байгуулалт.",
     "legacyName": "Террас",
     "images": [
-      "./renders/terrace.png"
+      "./renders/imagegen/terrace.webp"
     ],
     "credit": "Өмнөх AI концепц"
   },
@@ -267,7 +267,7 @@
     "legacyDescription": "Унтлагын өрөөнүүдийг холбох тайван өнгө, зөөлөн гэрэлтэй хонгил.",
     "legacyName": "Хонгил",
     "images": [
-      "./renders/hall2.png"
+      "./renders/imagegen/hall2.webp"
     ],
     "credit": "Өмнөх AI концепц"
   },
@@ -281,7 +281,7 @@
     "legacyDescription": "Давхрын холбоосыг нэг хэв маягт оруулсан дээд талын шатны хэсэг.",
     "legacyName": "Шатны хэсэг",
     "images": [
-      "./renders/stairs2.png"
+      "./renders/imagegen/stairs2.webp"
     ],
     "credit": "Өмнөх AI концепц"
   },
@@ -295,7 +295,7 @@
     "legacyDescription": "Цэвэр агаарт сууж, амрахад зориулсан тагтны энгийн тохижилт.",
     "legacyName": "Тагт",
     "images": [
-      "./renders/balcony.png"
+      "./renders/imagegen/balcony.webp"
     ],
     "credit": "Өмнөх AI концепц"
   }

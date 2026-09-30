@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#234f3f" />
+  <meta name="description" content="Сэлбэ гэр бүлийн сууцын 15 өрөө, хэсгийн бодит мэт интерьерийн зураг. Хоёр давхар, нэг хэв маяг." />
+  <title>Интерьерийн зургууд · Сэлбэ</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <script type="module" src="./src/gallery.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Сэлбэ 3D орон зайн студи">
+      <img src="./favicon.svg" width="42" height="42" alt="" />
+      <span><strong>СЭЛБЭ<span>.</span></strong><small>ОРОН ЗАЙН СТУДИ</small></span>
+    </a>
+    <a class="back-link" href="./"><span aria-hidden="true">←</span><span>3D төлөвлөлт</span></a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-content">
+        <p class="eyebrow">ANO DESIGN / 2026.01</p>
+        <h1 id="page-title">Шинэ интерьер.<br /><em>Өрөө бүрээр.</em></h1>
+        <p class="intro-copy">Улбар шар, крем, цайвар мод.<br />Шинэ ажлын зургийн 40 интерьер дүрслэл.</p>
+        <div class="collection-summary"><span class="collection-count">15</span><div><strong>өрөө, хэсэг</strong><span>2 давхар · 2026 оны шинэ загвар</span></div></div>
+      </div>
+      <figure class="hero-image"><img src="./references/ano-2026/interior-11.jpg" alt="ANO Design-ийн эх PDF дэх зочны өрөөний шинэ интерьер" width="1536" height="1024" fetchpriority="high" /><figcaption><span>ЗОЧНЫ ӨРӨӨ / ЭХ PDF</span><span>ANO DESIGN</span></figcaption></figure>
+    </section>
+    <section class="collection-controls" aria-label="Галерейн тохиргоо">
+      <div class="mode-switch" role="group" aria-label="Зургийн төрөл">
+        <button data-mode="source" class="active" aria-pressed="true">2026 · ANO эх зураг</button>
+        <button data-mode="photo" aria-pressed="false">Өмнөх AI концепц</button>
+        <button data-mode="3d" aria-pressed="false">Миний 3D төлөвлөлт</button>
+      </div>
+      <p id="mode-description">Өрөө тус бүрийн материал, гэрэлтүүлэг, уур амьсгалыг нэг зурагт.</p>
+      <div id="live-controls" class="render-options" hidden>
+        <label>Төлөвлөлт <select id="layout-choice"><option value="saved">Миний хадгалсан хувилбар</option><option value="base">2026 оны суурь төлөвлөлт</option></select></label>
+        <label>Харагдац <select id="perspective-choice"><option value="inside">Өрөөний дотор</option><option value="3d">Байрлал · дээрээс 3D</option></select></label>
+      </div>
+      <p id="render-status" class="load-error" role="status" hidden></p>
+    </section>
+    <div class="gallery-toolbar">
+      <div class="filters" role="group" aria-label="Зургуудыг давхраар шүүх">
+        <button data-floor="all" class="active" aria-pressed="true">Бүгд <span>15</span></button>
+        <button data-floor="0" aria-pressed="false">1-р давхар <span>8</span></button>
+        <button data-floor="1" aria-pressed="false">2-р давхар <span>7</span></button>
+      </div>
+      <p id="result-count" role="status" aria-live="polite">15 зураг</p>
+    </div>
+    <div id="gallery"><p class="loading-message" role="status">Зургуудыг ачаалж байна…</p></div>
+    <noscript><p class="load-error">Галерейг үзэхийн тулд хөтөчийн JavaScript-ийг идэвхжүүлнэ үү.</p></noscript>
+    <aside class="concept-note"><span class="note-mark" aria-hidden="true">i</span><p>ANO Design-ийн эх зургуудыг хэрэглэгчийн өгсөн «SELEH inteiror.pdf»-ээс зохиогчийн тэмдэглэгээтэй нь оруулав. «Өмнөх AI концепц» нь өмнө бүтээсэн тусдаа санал. Тавилгын байрлалыг 3D төлөвлөлтөд өөрчлөхөд эдгээр зураг шинэчлэгдэхгүй; өөрийн хувилбарыг «Миний 3D төлөвлөлт»-өөс үзнэ. Хэмжээс, цонх, хаалганы мэдээллийг <a href="./plan-notes.html">«Эх зураг ба зөрүү»</a> хэсгээс шалгана.</p></aside>
+  </main>
+  <p class="archive-link"><a href="./earlier-renders.html?collection=legacy">Анхны концепцийн архив →</a></p>
+  <footer><span>СЭЛБЭ · ГЭР БҮЛИЙН СУУЦ</span><a href="./">Тавилгын байрлалаа 3D-д турших <span aria-hidden="true">↗</span></a></footer>
+  <dialog id="lightbox" aria-labelledby="render-title" aria-describedby="render-description">
+    <div class="lightbox-top"><span id="render-counter"></span><button id="close-render" class="icon-button" aria-label="Зургийг хаах" title="Хаах (Esc)">×</button></div>
+    <div class="lightbox-image-wrap"><img id="render-image" alt="" /><p id="image-loading" role="status" hidden>Зургийг ачаалж байна…</p><p id="image-error" hidden>Зургийг ачаалж чадсангүй. Дахин ачаалаад үзээрэй.</p><button id="previous-render" class="image-nav previous" aria-label="Өмнөх зураг" title="Өмнөх зураг (←)">←</button><button id="next-render" class="image-nav next" aria-label="Дараах зураг" title="Дараах зураг (→)">→</button></div>
+    <div id="view-strip" class="view-strip" aria-label="Өрөөний бусад өнцөг"></div>
+    <div class="lightbox-caption"><div><p id="render-meta" class="eyebrow"></p><h2 id="render-title"></h2><p id="render-description"></p></div><a id="download-render" class="download-button" download><span aria-hidden="true">↓</span>Зураг татах</a></div>
+  </dialog>
+  <div id="render-engine" aria-hidden="true"></div>
+</body>
+</html>

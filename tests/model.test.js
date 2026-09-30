@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ROOMS,initialLayout,DEFAULT_ITEMS} from '../src/data.js';
-import {validateLayout,pointInPoly,corners,polygonsOverlap,itemWarnings,History,loadLayout,STORE_KEY,LEGACY_STORE_KEY} from '../src/model.js';
+import {validateLayout,pointInPoly,corners,polygonsOverlap,itemWarnings,History,loadLayout,STORE_KEY,LEGACY_STORE_KEY,PREVIOUS_STORE_KEY} from '../src/model.js';
 
 test('Both source floors and all source room areas are represented',()=>{
  assert.equal(ROOMS.length,15);assert.equal(ROOMS.filter(r=>r.floor===0).length,8);
@@ -50,12 +50,14 @@ test('January 2026 plan has eight dining seats and revised bedrooms',()=>{
 test('New defaults never overwrite the previous local plan; existing revision edits survive reload',()=>{
  const legacy=initialLayout();legacy.theme='natural';legacy.items[0].x=2.25;
  for(const surface of Object.values(legacy.surfaces))surface.floor='oak';
- const legacyJson=JSON.stringify(legacy),map=new Map([[LEGACY_STORE_KEY,legacyJson]]);
+ const legacyJson=JSON.stringify(legacy),map=new Map([[LEGACY_STORE_KEY,legacyJson],[PREVIOUS_STORE_KEY,legacyJson]]);
  const storage={getItem:key=>map.get(key),setItem:(key,value)=>map.set(key,value)};
  assert.equal(loadLayout(storage).theme,'ano2026');
  assert.equal(map.get(LEGACY_STORE_KEY),legacyJson);
+ assert.equal(map.get(PREVIOUS_STORE_KEY),legacyJson);
  assert.equal(validateLayout(JSON.parse(legacyJson)).items[0].x,2.25);
  const revision=initialLayout();revision.items[0].x=1.9;storage.setItem(STORE_KEY,JSON.stringify(revision));
  assert.equal(loadLayout(storage).items[0].x,1.9);
  assert.equal(map.get(LEGACY_STORE_KEY),legacyJson);
+ assert.equal(map.get(PREVIOUS_STORE_KEY),legacyJson);
 });
