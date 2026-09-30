@@ -1,4 +1,5 @@
 export const THEMES = {
+  ano2026:{name:'ANO · 2026 ажлын зураг',wall:'#f2eee5',wood:'#bea584',fabric:'#e3d9c8',accent:'#c45f32',kitchen:'#eee5d2',upper:'#cd622f',floor:'herringbone',image:'./references/ano-2026/interior-06.jpg'},
   natural:{name:'Дулаан байгалийн', wall:'#f3eee4',wood:'#b99162',fabric:'#c9c0aa',accent:'#82927c',kitchen:'#e7dfcd',floor:'oak',image:'./inspiration/kitchen-natural.png'},
   sage:{name:'Бүдэг ногоон',wall:'#f3f1e9',wood:'#c2a77d',fabric:'#d0cfc4',accent:'#78927b',kitchen:'#829078',floor:'ash',image:'./inspiration/kitchen-sage.png'},
   walnut:{name:'Хушга + шаргал',wall:'#e5ded2',wood:'#775942',fabric:'#b5a391',accent:'#a66f51',kitchen:'#aaa18f',floor:'oak',image:'./inspiration/kitchen-walnut.png'},
@@ -7,19 +8,19 @@ const R=(x,z,w,d)=>[[x,z],[x+w,z],[x+w,z+d],[x,z+d]];
 export const ROOMS=[
   {id:'living',floor:0,name:'Зочны өрөө',area:25.04,tag:'Нийтийн',poly:R(0,6.025,4.6,5.575),focus:[2.4,8.8]},
   {id:'kitchen',floor:0,name:'Гал тогоо · хооллох',area:21.09,tag:'Нийтийн',poly:[[5.7,5.225],[9.6,5.225],[9.6,9.6],[4.6,9.6],[4.6,6.025],[5.7,6.025]],focus:[7.2,7.5]},
-  {id:'guest',floor:0,name:'Зочин · ажлын өрөө',area:16.48,tag:'Унтлагын',poly:[[0,0],[5.175,0],[5.175,2.675],[3.775,2.675],[3.775,3.375],[0,3.375]],focus:[2.5,1.65]},
+  {id:'guest',floor:0,name:'Унтлагын өрөө · 1-р давхар',area:16.48,tag:'Унтлагын',poly:[[0,0],[5.175,0],[5.175,2.675],[3.775,2.675],[3.775,3.375],[0,3.375]],focus:[2.5,1.65]},
   {id:'bath1',floor:0,name:'Угаалгын өрөө',area:5.21,tag:'Үйлчилгээ',poly:R(5.3,0,1.95,2.675),focus:[6.28,1.3],tile:true},
   {id:'utility',floor:0,name:'Техникийн өрөө',area:5.95,tag:'Үйлчилгээ',poly:R(7.375,0,2.225,2.675),focus:[8.5,1.3],tile:true},
   {id:'hall1',floor:0,name:'Үүд · хонгил',area:14.68,tag:'Холбоос',poly:[[3.9,2.8],[9.6,2.8],[9.6,5.10],[5.575,5.10],[5.575,6.025],[3.9,6.025]],focus:[6.4,3.85]},
   {id:'stairs1',floor:0,name:'Шатны хэсэг',area:9.36,tag:'Холбоос',poly:R(0,3.5,3.9,2.4),focus:[2,4.7],fixed:true},
   {id:'terrace',floor:0,name:'Террас',area:57.92,tag:'Гадна',poly:[[10.05,-.35],[12.15,-.35],[12.15,13.85],[-.35,13.85],[-.35,12.05],[4.6,12.05],[4.6,10.05],[10.05,10.05]],focus:[7,11.7],outdoor:true},
   {id:'master',floor:1,name:'Эцэг эхийн өрөө',area:33.95,tag:'Унтлагын',poly:[[5.825,4.625],[9.6,4.625],[9.6,9.6],[1.4,9.6],[1.4,6.025],[5.825,6.025]],focus:[5.8,7.5]},
-  {id:'kids',floor:1,name:'Хоёр хүүхдийн өрөө',area:16.48,tag:'Унтлагын',poly:[[0,0],[5.175,0],[5.175,2.675],[3.775,2.675],[3.775,3.375],[0,3.375]],focus:[2.5,1.65]},
-  {id:'child',floor:1,name:'Нэг хүүхдийн өрөө',area:10.94,tag:'Унтлагын',poly:[[7.375,0],[9.6,0],[9.6,4.5],[6.825,4.5],[6.825,2.8],[7.375,2.8]],focus:[8.35,2.2]},
+  {id:'kids',floor:1,name:'Унтлагын өрөө · 2 хүн',area:16.48,tag:'Унтлагын',poly:[[0,0],[5.175,0],[5.175,2.675],[3.775,2.675],[3.775,3.375],[0,3.375]],focus:[2.5,1.65]},
+  {id:'child',floor:1,name:'Унтлагын өрөө · 1 хүн',area:10.94,tag:'Унтлагын',poly:[[7.375,0],[9.6,0],[9.6,4.5],[6.825,4.5],[6.825,2.8],[7.375,2.8]],focus:[8.35,2.2]},
   {id:'bath2',floor:1,name:'Ариун цэврийн өрөө',area:5.21,tag:'Үйлчилгээ',poly:R(5.3,0,1.95,2.675),focus:[6.28,1.3],tile:true},
   {id:'hall2',floor:1,name:'Хонгил',area:7.27,tag:'Холбоос',poly:[[3.9,2.8],[6.7,2.8],[6.7,4.5],[5.7,4.5],[5.7,5.9],[3.9,5.9]],focus:[5.2,4.2]},
   {id:'stairs2',floor:1,name:'Шатны хэсэг',area:9.3,tag:'Холбоос',poly:R(0,3.5,3.9,2.4),focus:[2,4.7],fixed:true},
-  {id:'balcony',floor:1,name:'Тагт',area:10.6,tag:'Гадна',poly:R(-.35,10.05,5.3,1.9),focus:[2.3,11],outdoor:true},
+  {id:'balcony',floor:1,name:'Тагт',area:10.6,tag:'Гадна',poly:[[-.35,6.025],[1.17,6.025],[1.17,9.83],[4.83,9.83],[4.83,11.95],[-.35,11.95]],focus:[2.3,11],outdoor:true},
 ];
 export const FLOOR_OUTLINES=[[[0,0],[9.6,0],[9.6,9.6],[4.6,9.6],[4.6,11.6],[0,11.6]],[[0,0],[9.6,0],[9.6,9.6],[1.4,9.6],[1.4,6.025],[0,6.025]]];
 // Wall segment openings: start/end distance from a, sill and height in metres.
@@ -33,7 +34,7 @@ export function wallsFor(f){
  wall([9.6,0],[9.6,9.6],upper?[win(1.1,2.6),win(6.2,7.7)]:[door(2.85,4.35),door(6.55,7.45),win(7.85,9.35)],true),
  wall([0,3.375],[3.775,3.375]),wall([3.775,2.675],[3.775,3.375]),
  wall([3.775,2.675],[5.3,2.675],[door(.3,1.26)]),wall([5.2375,0],[5.2375,2.675]),
- wall([5.3,2.675],[7.375,2.675],[upper?door(.3,1.16):door(1,1.86)]),
+ wall([5.3,2.675],[7.375,2.675],[door(.3,1.16)]),
  wall([7.3125,0],[7.3125,2.675]),wall([0,6.025],[3.9,6.025])];
  if(upper)w.push(wall([7.375,2.8],[6.825,2.8]),wall([6.825,2.8],[6.825,4.5],[door(0,.96)]),wall([6.825,4.5625],[9.6,4.5625]),
  wall([3.9,6.025],[5.825,6.025],[door(.64,1.6)]),wall([5.825,4.625],[5.825,6.025]),
@@ -70,29 +71,44 @@ function put(room,type,x,z,w,d,rotation=0,options={}){
  const r=ROOMS.find(r=>r.id===room),c=CATALOG[type];items.push({id:`base-${++next}`,room,floor:r.floor,type,label:c.name,x:x+w/2,z:z+d/2,w,d,h:c.h,rotation,...options});
 }
 function seat(room,x,z,rot=0){put(room,'chair',x,z,.45,.45,rot);}
-put('guest','single',1.85,.15,1.2,2);put('guest','nightstand',3.25,.15,.4,.4);
-put('guest','desk',.15,.1,1.35,.6);seat('guest',.6,.8,180);put('guest','wardrobe',4.575,.1,.6,1.45,90);
+
+// Coordinates in metres, simplified from ANO Design 2026/01 sheets 3 and 23.
+// This helper accepts a centre to avoid swapped footprints on rotated furniture.
+function centre(room,type,x,z,w,d,rotation=0,options={}){put(room,type,x-w/2,z-d/2,w,d,rotation,options);}
+for(const r of ['guest','kids']){
+ put(r,'bed',1.06,.05,1.65,2);
+ put(r,'nightstand',.51,.05,.5,.4);put(r,'nightstand',2.76,.05,.5,.4);
+ put(r,'desk',3.34,.05,1.2,.5,0,{label:'Гоёлын ширээ'});seat(r,3.72,.68,180);
+ centre(r,'wardrobe',4.88,.875,1.65,.55,-90,{color:'#e7dfd0'});
+ put(r,'tv',.688,3.0,2.4,.35,180,{color:'#e7dfd0'});
+}
 put('utility','utility',7.65,.2,1.2,.7,0,{locked:true});
 for(const r of ['bath1','bath2']){
- put(r,'bath',5.4,.12,1.75,.72,0,{locked:true});
- put(r,'sink',r==='bath1'?5.4:6.7,1.05,.45,.55,0,{locked:true});
- put(r,'toilet',r==='bath1'?5.50:6.70,1.82,.4,.65,0,{locked:true});
+ put(r,'bath',5.325,.025,r==='bath1'?1.8:1.9,.8,0,{locked:true});
+ centre(r,'sink',6.95,1.3,.5,.55,-90,{locked:true});
+ centre(r,'toilet',6.85,2.05,.4,.65,-90,{locked:true});
 }
-put('hall1','wardrobe',7.4,4.55,1.8,.55,180);put('hall1','bench',6.1,4.65,1,.45,180);
-put('kitchen','kitchen',5.7,5.225,3.9,.6,0,{locked:true});put('kitchen','dining',6.3,7.55,1.8,.9);
-seat('kitchen',6.48,7.04);seat('kitchen',7.46,7.04);seat('kitchen',6.48,8.50,180);seat('kitchen',7.46,8.50,180);seat('kitchen',5.8,7.77,-90);seat('kitchen',8.15,7.77,90);
-put('living','rug',.6,8.25,3.85,3,0);
-put('living','sofa',2.375,9.275,2.6,.95,-90); // centre 3.675, 9.75; rotated footprint .95 × 2.6
-put('living','tv',-.70,9.525,1.8,.35,90);put('living','coffee',1.5,9.4,1.2,.6,90);put('living','armchair',.85,7.65,.8,.8);
-put('living','plant',.35,10.7,.45,.45);
-put('terrace','dining',6,11,1.8,.9);for(const x of [6.2,7.15]){seat('terrace',x,10.49);seat('terrace',x,11.95,180)}
-put('kids','single',.8,-.45,.9,2,-90);put('kids','single',.8,1.825,.9,2,-90);
-put('kids','desk',2.7,.1,1.6,.6);seat('kids',2.85,.8,180);seat('kids',3.7,.8,180);put('kids','wardrobe',4.15,.525,1.45,.6,90);
-put('child','single',7.5,.15,.9,2);put('child','wardrobe',7.5,3.9,1.2,.6,180);put('child','desk',8.825,3.025,1,.55,90);seat('child',8.5,3.1,-90);
-put('master','bed',6.6,4.825,1.8,2);put('master','nightstand',6,4.875,.5,.45);put('master','nightstand',8.5,4.875,.5,.45);
-put('master','wardrobe',4.05,7.8,1.8,.6,-90);put('master','desk',6.6,9,1.8,.6,180);seat('master',7.2,8.35);put('master','armchair',1.75,7.95,.75,.75);put('master','rug',6.25,6.75,2.7,1.55);
+put('hall1','wardrobe',5.75,4.55,2.45,.5,180,{color:'#e8dfcc'});
+put('hall1','bench',8.25,4.55,1.15,.5,180,{color:'#c45f32'});
+put('kitchen','kitchen',5.7,5.225,3.6,.6,0,{locked:true});
+put('kitchen','dining',6.2,7.65,2,1);
+for(const x of [6.38,6.98,7.58]){seat('kitchen',x,7.12);seat('kitchen',x,8.75,180);}
+seat('kitchen',5.65,7.92,-90);seat('kitchen',8.32,7.92,90);
+put('living','rug',.55,7.55,3.5,3.8,0,{color:'#baa693'});
+centre('living','sofa',3.7,9.15,2.203,.871,-90);
+centre('living','tv',.175,8.95,2.4,.35,90,{color:'#ece5d9'});
+put('living','coffee',1.5,8.58,1.2,1.2);
+for(const [x,z,rot,color] of [[.755,7.05,0,'#c45f32'],[2,7.05,0,'#e3d9c8'],[.755,10.4,180,'#e3d9c8'],[2,10.4,180,'#c45f32']])put('living','armchair',x,z,.998,.868,rot,{color});
+put('living','plant',.1,11.05,.4,.4);
+put('terrace','dining',6,11,1.8,.9);for(const x of [6.2,7.15]){seat('terrace',x,10.49);seat('terrace',x,11.95,180);}
+put('child','single',7.5,.05,.95,2);put('child','nightstand',8.55,.05,.45,.4);
+put('child','wardrobe',7.95,3.9,1.6,.55,180,{color:'#e8dfd1'});
+put('master','wardrobe',5.9,4.65,3.6,.5,0,{color:'#b5aaa0',label:'Хувцас солих хэсгийн шүүгээ'});
+put('master','bed',7.15,5.95,1.65,2);put('master','nightstand',6.6,5.95,.5,.4);put('master','nightstand',8.85,5.95,.5,.4);
+put('master','bench',7.38,8.08,1.2,.4,0,{label:'Орны хөлний сандал'});
+centre('master','sofa',1.95,7.87,2.203,.749,90);
+put('master','coffee',3,7.4,1,1);
+for(const x of [2.85,3.75]){put('master','armchair',x,6.55,.601,.626,0,{color:'#c4b8a7'});put('master','armchair',x,8.65,.601,.626,180,{color:'#c4b8a7'});}
 put('balcony','armchair',.2,10.65,.65,.65);
-// Correct the guest wardrobe to use local furniture dimensions with a rotated footprint.
-const gw=items.find(i=>i.room==='guest'&&i.type==='wardrobe');gw.w=1.45;gw.d=.6;
 export const DEFAULT_ITEMS=items;
-export function initialLayout(){return {version:1,theme:'natural',items:structuredClone(DEFAULT_ITEMS),surfaces:Object.fromEntries(ROOMS.map(r=>[r.id,{wall:THEMES.natural.wall,floor:r.outdoor?'deck':r.tile?'tile':'oak'}]))};}
+export function initialLayout(){return {version:1,theme:'ano2026',items:structuredClone(DEFAULT_ITEMS),surfaces:Object.fromEntries(ROOMS.map(r=>[r.id,{wall:THEMES.ano2026.wall,floor:r.outdoor?'deck':r.tile||r.id==='master'?'tile':'herringbone'}]))};}

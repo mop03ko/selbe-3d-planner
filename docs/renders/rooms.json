@@ -5,7 +5,30 @@
     "name": "Зочны өрөө",
     "area": 25.04,
     "tag": "Нийтийн",
-    "description": "Дулаан модон өнгө, зөөлөн суудал, гэр бүлийн хамтын амралтын орчин."
+    "description": "Улбар шар, крем зөөлөн сандал, 2.20 м буйдан, дөрвөлжин кофе ширээ, модон сараалжин тааз.",
+    "legacyDescription": "Дулаан модон өнгө, зөөлөн суудал, гэр бүлийн хамтын амралтын орчин.",
+    "legacyName": "Зочны өрөө",
+    "images": [
+      "./references/ano-2026/interior-11.jpg",
+      "./references/ano-2026/interior-12.jpg",
+      "./references/ano-2026/interior-13.jpg",
+      "./references/ano-2026/interior-14.jpg",
+      "./references/ano-2026/interior-15.jpg",
+      "./references/ano-2026/interior-16.jpg",
+      "./references/ano-2026/interior-17.jpg",
+      "./references/ano-2026/interior-18.jpg"
+    ],
+    "sourcePages": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "kitchen",
@@ -13,15 +36,53 @@
     "name": "Гал тогоо · хооллох",
     "area": 21.09,
     "tag": "Нийтийн",
-    "description": "Шулуун гал тогоо, зургаан хүний хоолны ширээ, байгалийн гэрэлтэй нийтийн орон зай."
+    "description": "Улбар шар дээд шүүгээ ба ханын хамгаалалт, крем доод шүүгээ, 2 × 1 м ширээ, 8 суудал.",
+    "legacyDescription": "Шулуун гал тогоо, зургаан хүний хоолны ширээ, байгалийн гэрэлтэй нийтийн орон зай.",
+    "legacyName": "Гал тогоо · хооллох",
+    "images": [
+      "./references/ano-2026/interior-06.jpg",
+      "./references/ano-2026/interior-07.jpg",
+      "./references/ano-2026/interior-08.jpg",
+      "./references/ano-2026/interior-09.jpg",
+      "./references/ano-2026/interior-10.jpg"
+    ],
+    "sourcePages": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "guest",
     "floor": 0,
-    "name": "Зочин · ажлын өрөө",
+    "name": "Унтлагын өрөө · 1-р давхар",
     "area": 16.48,
     "tag": "Унтлагын",
-    "description": "Зочны унтлагын болон өдөр тутмын ажлын хэрэгцээг хослуулсан уян хатан өрөө."
+    "description": "1.65 × 2 м хоёр хүний ор, гоёлын ширээ, хувцасны шүүгээ, ТВ тавиур.",
+    "legacyDescription": "Зочны унтлагын болон өдөр тутмын ажлын хэрэгцээг хослуулсан уян хатан өрөө.",
+    "legacyName": "Зочин · ажлын өрөө",
+    "images": [
+      "./references/ano-2026/interior-19.jpg",
+      "./references/ano-2026/interior-20.jpg",
+      "./references/ano-2026/interior-21.jpg",
+      "./references/ano-2026/interior-22.jpg",
+      "./references/ano-2026/interior-23.jpg",
+      "./references/ano-2026/interior-24.jpg",
+      "./references/ano-2026/interior-25.jpg"
+    ],
+    "sourcePages": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "bath1",
@@ -29,7 +90,16 @@
     "name": "Угаалгын өрөө",
     "area": 5.21,
     "tag": "Үйлчилгээ",
-    "description": "Цайвар гадаргуу, дулаан модон акценттай нэгдүгээр давхрын угаалгын өрөө."
+    "description": "Ванн, баруун ханын угаалтуур ба суултуур, дулаан саарал чулуун өнгөлгөө.",
+    "legacyDescription": "Цайвар гадаргуу, дулаан модон акценттай нэгдүгээр давхрын угаалгын өрөө.",
+    "legacyName": "Угаалгын өрөө",
+    "images": [
+      "./references/ano-2026/interior-27.jpg"
+    ],
+    "sourcePages": [
+      27
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "utility",
@@ -37,7 +107,13 @@
     "name": "Техникийн өрөө",
     "area": 5.95,
     "tag": "Үйлчилгээ",
-    "description": "Төхөөрөмж, хадгалалт, өдөр тутмын арчилгааг эмхэлсэн туслах орон зай."
+    "description": "Шинэ PDF-д энэ хэсгийн тусдаа рендер байхгүй. Өмнөх AI концепцийг харуулж байна. Төхөөрөмж, хадгалалт, өдөр тутмын арчилгааг эмхэлсэн туслах орон зай.",
+    "legacyDescription": "Төхөөрөмж, хадгалалт, өдөр тутмын арчилгааг эмхэлсэн туслах орон зай.",
+    "legacyName": "Техникийн өрөө",
+    "images": [
+      "./renders/utility.png"
+    ],
+    "credit": "Өмнөх AI концепц"
   },
   {
     "id": "hall1",
@@ -45,7 +121,20 @@
     "name": "Үүд · хонгил",
     "area": 14.68,
     "tag": "Холбоос",
-    "description": "Өдөр тутмын хувцас, гутлын хадгалалттай угтах хэсэг болон хонгил."
+    "description": "Крем шүүгээ, улбар шар суудалтай нээлттэй өлгүүрийн хэсэг.",
+    "legacyDescription": "Өдөр тутмын хувцас, гутлын хадгалалттай угтах хэсэг болон хонгил.",
+    "legacyName": "Үүд · хонгил",
+    "images": [
+      "./references/ano-2026/interior-03.jpg",
+      "./references/ano-2026/interior-02.jpg",
+      "./references/ano-2026/interior-05.jpg"
+    ],
+    "sourcePages": [
+      3,
+      2,
+      5
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "stairs1",
@@ -53,7 +142,16 @@
     "name": "Шатны хэсэг",
     "area": 9.36,
     "tag": "Холбоос",
-    "description": "Модон өнгө, зөөлөн гэрэлтэй хоёр давхрыг холбох шатны хэсэг."
+    "description": "Цайвар шат, дулаан модон хаалга, далд гэрэлтүүлэг.",
+    "legacyDescription": "Модон өнгө, зөөлөн гэрэлтэй хоёр давхрыг холбох шатны хэсэг.",
+    "legacyName": "Шатны хэсэг",
+    "images": [
+      "./references/ano-2026/interior-04.jpg"
+    ],
+    "sourcePages": [
+      4
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "terrace",
@@ -61,7 +159,13 @@
     "name": "Террас",
     "area": 57.92,
     "tag": "Гадна",
-    "description": "Гэр бүлээрээ хооллож, амрах гадаах террасын зохион байгуулалт."
+    "description": "Шинэ PDF-д энэ хэсгийн тусдаа рендер байхгүй. Өмнөх AI концепцийг харуулж байна. Гэр бүлээрээ хооллож, амрах гадаах террасын зохион байгуулалт.",
+    "legacyDescription": "Гэр бүлээрээ хооллож, амрах гадаах террасын зохион байгуулалт.",
+    "legacyName": "Террас",
+    "images": [
+      "./renders/terrace.png"
+    ],
+    "credit": "Өмнөх AI концепц"
   },
   {
     "id": "master",
@@ -69,23 +173,72 @@
     "name": "Эцэг эхийн өрөө",
     "area": 33.95,
     "tag": "Унтлагын",
-    "description": "Унтах, хувцас хадгалах, тайван амрах хэрэгцээг нэгтгэсэн эцэг эхийн өрөө."
+    "description": "Хувцас солих хэсэг, хоёр хүний ор, буйдан ба дөрвөн сандалтай амралтын хэсэг. Цайвар чулуун шал.",
+    "legacyDescription": "Унтах, хувцас хадгалах, тайван амрах хэрэгцээг нэгтгэсэн эцэг эхийн өрөө.",
+    "legacyName": "Эцэг эхийн өрөө",
+    "images": [
+      "./references/ano-2026/interior-30.jpg",
+      "./references/ano-2026/interior-31.jpg",
+      "./references/ano-2026/interior-32.jpg",
+      "./references/ano-2026/interior-33.jpg",
+      "./references/ano-2026/interior-34.jpg",
+      "./references/ano-2026/interior-35.jpg"
+    ],
+    "sourcePages": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "kids",
     "floor": 1,
-    "name": "Хоёр хүүхдийн өрөө",
+    "name": "Унтлагын өрөө · 2 хүн",
     "area": 16.48,
     "tag": "Унтлагын",
-    "description": "Хоёр хүүхдийн тусдаа унтлагын байр, хичээл хийх болон хадгалах орон зай."
+    "description": "Хоёр хүний ор, гоёлын ширээ, шүүгээтэй шинэ унтлагын өрөө.",
+    "legacyDescription": "Хоёр хүүхдийн тусдаа унтлагын байр, хичээл хийх болон хадгалах орон зай.",
+    "legacyName": "Хоёр хүүхдийн өрөө",
+    "images": [
+      "./references/ano-2026/interior-26.jpg",
+      "./references/ano-2026/interior-28.jpg",
+      "./references/ano-2026/interior-29.jpg"
+    ],
+    "sourcePages": [
+      26,
+      28,
+      29
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "child",
     "floor": 1,
-    "name": "Нэг хүүхдийн өрөө",
+    "name": "Унтлагын өрөө · 1 хүн",
     "area": 10.94,
     "tag": "Унтлагын",
-    "description": "Нэг хүүхдийн унтах, суралцах, хувийн эд зүйлээ эмхлэх тухтай өрөө."
+    "description": "Нэг хүний ор, орны хажуугийн тавиур, ханын шүүгээтэй цайвар өрөө.",
+    "legacyDescription": "Нэг хүүхдийн унтах, суралцах, хувийн эд зүйлээ эмхлэх тухтай өрөө.",
+    "legacyName": "Нэг хүүхдийн өрөө",
+    "images": [
+      "./references/ano-2026/interior-37.jpg",
+      "./references/ano-2026/interior-38.jpg",
+      "./references/ano-2026/interior-39.jpg",
+      "./references/ano-2026/interior-40.jpg",
+      "./references/ano-2026/interior-41.jpg"
+    ],
+    "sourcePages": [
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "bath2",
@@ -93,7 +246,16 @@
     "name": "Ариун цэврийн өрөө",
     "area": 5.21,
     "tag": "Үйлчилгээ",
-    "description": "Цэвэрхэн цайвар материал, дулаан өнгөөр шийдсэн хоёрдугаар давхрын угаалгын өрөө."
+    "description": "Ванн, угаалтуур, суултуур, дулаан чулуун өнгөлгөө.",
+    "legacyDescription": "Цэвэрхэн цайвар материал, дулаан өнгөөр шийдсэн хоёрдугаар давхрын угаалгын өрөө.",
+    "legacyName": "Ариун цэврийн өрөө",
+    "images": [
+      "./references/ano-2026/interior-36.jpg"
+    ],
+    "sourcePages": [
+      36
+    ],
+    "credit": "ANO Design · эх PDF"
   },
   {
     "id": "hall2",
@@ -101,7 +263,13 @@
     "name": "Хонгил",
     "area": 7.27,
     "tag": "Холбоос",
-    "description": "Унтлагын өрөөнүүдийг холбох тайван өнгө, зөөлөн гэрэлтэй хонгил."
+    "description": "Шинэ PDF-д энэ хэсгийн тусдаа рендер байхгүй. Өмнөх AI концепцийг харуулж байна. Унтлагын өрөөнүүдийг холбох тайван өнгө, зөөлөн гэрэлтэй хонгил.",
+    "legacyDescription": "Унтлагын өрөөнүүдийг холбох тайван өнгө, зөөлөн гэрэлтэй хонгил.",
+    "legacyName": "Хонгил",
+    "images": [
+      "./renders/hall2.png"
+    ],
+    "credit": "Өмнөх AI концепц"
   },
   {
     "id": "stairs2",
@@ -109,7 +277,13 @@
     "name": "Шатны хэсэг",
     "area": 9.3,
     "tag": "Холбоос",
-    "description": "Давхрын холбоосыг нэг хэв маягт оруулсан дээд талын шатны хэсэг."
+    "description": "Шинэ PDF-д энэ хэсгийн тусдаа рендер байхгүй. Өмнөх AI концепцийг харуулж байна. Давхрын холбоосыг нэг хэв маягт оруулсан дээд талын шатны хэсэг.",
+    "legacyDescription": "Давхрын холбоосыг нэг хэв маягт оруулсан дээд талын шатны хэсэг.",
+    "legacyName": "Шатны хэсэг",
+    "images": [
+      "./renders/stairs2.png"
+    ],
+    "credit": "Өмнөх AI концепц"
   },
   {
     "id": "balcony",
@@ -117,6 +291,12 @@
     "name": "Тагт",
     "area": 10.6,
     "tag": "Гадна",
-    "description": "Цэвэр агаарт сууж, амрахад зориулсан тагтны энгийн тохижилт."
+    "description": "Шинэ PDF-д энэ хэсгийн тусдаа рендер байхгүй. Өмнөх AI концепцийг харуулж байна. Цэвэр агаарт сууж, амрахад зориулсан тагтны энгийн тохижилт.",
+    "legacyDescription": "Цэвэр агаарт сууж, амрахад зориулсан тагтны энгийн тохижилт.",
+    "legacyName": "Тагт",
+    "images": [
+      "./renders/balcony.png"
+    ],
+    "credit": "Өмнөх AI концепц"
   }
 ]

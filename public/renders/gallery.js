@@ -5,16 +5,21 @@ let rooms = [];
 let floor = 'all';
 let currentId = null;
 let openingButton = null;
+let collection = 'new';
+let currentView = 0;
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
-const imagePath = room => `./renders/${room.id}.png`;
+const imagesFor = room => collection === 'legacy' ? [`./renders/${room.id}.png`] : room.images;
+const imagePath = room => imagesFor(room)[0];
+const creditFor = room => collection === 'legacy' ? 'Өмнөх AI концепц' : room.credit;
 const visibleRooms = () => rooms.filter(room => floor === 'all' || room.floor === Number(floor));
 
 function renderGallery() {
   const filtered = visibleRooms();
-  $('#result-count').textContent = `${filtered.length} зураг`;
+  $('#result-count').textContent = `${filtered.length} өрөө · ${filtered.reduce((sum,r)=>sum+imagesFor(r).length,0)} зураг`;
+  document.querySelectorAll('[data-collection]').forEach(button=>{const active=button.dataset.collection===collection;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
   gallery.innerHTML = [0, 1].filter(index => floor === 'all' || index === Number(floor)).map(index => {
     const list = filtered.filter(room => room.floor === index);
-    return `<section class="floor-section" aria-labelledby="floor-${index}"><div class="floor-heading"><h2 id="floor-${index}">${index + 1}-р давхар</h2><span>${list.length} өрөө, хэсэг</span></div><div class="room-grid">${list.map(room => `<article class="room-card"><button class="room-image-button" data-open="${room.id}" aria-label="${escapeHtml(room.name)} — рендерийг томруулж үзэх"><img src="${imagePath(room)}" alt="${escapeHtml(room.name)}: интерьерийн концепц рендер" width="1536" height="1024" loading="lazy" decoding="async" /><span class="room-number">${String(rooms.indexOf(room) + 1).padStart(2, '0')}</span><span class="open-mark" aria-hidden="true">↗</span></button><div class="card-caption"><div class="card-copy"><h3>${escapeHtml(room.name)}</h3><div class="card-meta"><span>${room.area.toFixed(2)} м²</span><span aria-hidden="true">·</span><span>${escapeHtml(room.tag)}</span></div></div><a class="card-download" href="${imagePath(room)}" download="selbe-${room.id}.png" aria-label="${escapeHtml(room.name)} — зураг татах" title="Зураг татах">↓</a></div></article>`).join('')}</div></section>`;
+    return `<section class="floor-section" aria-labelledby="floor-${index}"><div class="floor-heading"><h2 id="floor-${index}">${index + 1}-р давхар</h2><span>${list.length} өрөө, хэсэг</span></div><div class="room-grid">${list.map(room => `<article class="room-card"><button class="room-image-button" data-open="${room.id}" aria-label="${escapeHtml(room.name)} — рендерийг томруулж үзэх"><img src="${imagePath(room)}" alt="${escapeHtml(room.name)}: интерьерийн концепц рендер" width="1536" height="1024" loading="lazy" decoding="async" /><span class="room-number">${String(rooms.indexOf(room) + 1).padStart(2, '0')}</span><span class="open-mark" aria-hidden="true">↗</span></button><div class="card-caption"><div class="card-copy"><h3>${escapeHtml(collection === 'legacy' ? room.legacyName : room.name)}</h3><div class="card-meta"><span>${room.area.toFixed(2)} м²</span><span aria-hidden="true">·</span><span>${escapeHtml(creditFor(room))}</span><span>${imagesFor(room).length} өнцөг</span></div></div><a class="card-download" href="${imagePath(room)}" download="${imagePath(room).split('/').pop()}" aria-label="${escapeHtml(room.name)} — зураг татах" title="Зураг татах">↓</a></div></article>`).join('')}</div></section>`;
   }).join('');
   gallery.querySelectorAll('img').forEach(image => {
     image.addEventListener('error', () => {
@@ -32,31 +37,44 @@ function renderGallery() {
   });
 }
 
-function showRoom(id, opener = null) {
+function showRoom(id, opener = null, view = 0) {
   const room = rooms.find(room => room.id === id);
   if (!room) return;
   if (opener) openingButton = opener;
   currentId = room.id;
+  currentView = view;
+  const images = imagesFor(room);
   const filtered = visibleRooms();
   const index = filtered.findIndex(item => item.id === id);
   $('#render-counter').textContent = `${String(index + 1).padStart(2, '0')} / ${String(filtered.length).padStart(2, '0')} · СЭЛБЭ`;
-  $('#render-meta').textContent = `${room.floor + 1}-Р ДАВХАР / ${room.area.toFixed(2)} М² / AI КОНЦЕПЦ`;
-  $('#render-title').textContent = room.name;
-  $('#render-description').textContent = room.description;
+  $('#render-meta').textContent = `${room.floor + 1}-Р ДАВХАР / ${room.area.toFixed(2)} М² / ${creditFor(room)}${collection === 'new' && room.sourcePages ? ' · PDF хуудас ' + room.sourcePages[view] : ''}`;
+  $('#render-title').textContent = collection === 'legacy' ? room.legacyName : room.name;
+  $('#render-description').textContent = collection === 'legacy' ? room.legacyDescription : room.description;
   const image = $('#render-image');
   image.hidden = false;
   $('#image-error').hidden = true;
   image.alt = `${room.name}: ${room.description}`;
-  image.src = imagePath(room);
-  $('#download-render').href = imagePath(room);
-  $('#download-render').download = `selbe-${room.id}.png`;
+  image.src = images[view];
+  $('#download-render').href = images[view];
+  $('#download-render').download = images[view].split('/').pop();
+  $('#view-strip').innerHTML = images.map((src,index) => `<button data-view="${index}" class="${index === view ? 'active' : ''}" aria-label="${index + 1}-р өнцөг" aria-pressed="${index === view}"><img src="${src}" alt="" loading="lazy"/><span>${index + 1}</span></button>`).join('');
   $('#previous-render').disabled = filtered.length < 2;
   $('#next-render').disabled = filtered.length < 2;
   if (!lightbox.open) lightbox.showModal();
   const url = new URL(location.href);
   url.searchParams.set('room', id);
+  url.searchParams.set('collection', collection);
   history.replaceState(null, '', url);
 }
+
+$('#view-strip').addEventListener('click', event => {
+  const button = event.target.closest('[data-view]');
+  if (button) showRoom(currentId, null, Number(button.dataset.view));
+});
+document.querySelectorAll('[data-collection]').forEach(button => button.addEventListener('click', () => {
+  collection = button.dataset.collection;
+  renderGallery();
+}));
 
 function step(direction) {
   const filtered = visibleRooms();
@@ -103,6 +121,7 @@ try {
   const response = await fetch('./renders/rooms.json');
   if (!response.ok) throw new Error('Room metadata unavailable');
   rooms = await response.json();
+  collection = new URLSearchParams(location.search).get('collection') === 'legacy' ? 'legacy' : 'new';
   renderGallery();
   const requestedRoom = new URLSearchParams(location.search).get('room');
   if (rooms.some(room => room.id === requestedRoom)) showRoom(requestedRoom);

@@ -21,12 +21,13 @@
   <main>
     <section class="intro" aria-labelledby="page-title">
       <div>
-        <p class="eyebrow">ИНТЕРЬЕРИЙН ЦУВРАЛ / 01</p>
+        <p class="eyebrow">ANO DESIGN / 2026.01</p>
         <h1 id="page-title">Өрөө бүрийн<br /><em>өнгө төрх.</em></h1>
-        <p class="intro-copy">Дулаан мод, зөөлөн өнгө, байгалийн гэрэл.<br />4–6 хүний гэр бүлд зориулсан нэгэн цогц интерьер.</p>
+        <p class="intro-copy">Улбар шар, крем, цайвар мод.<br />Шинэ ажлын зурагт нийцүүлсэн интерьерийн цуглуулга.</p>
       </div>
-      <div class="collection-summary"><span class="collection-count">15</span><div><strong>өрөө, хэсэг</strong><span>2 давхар · нэг хэв маяг</span></div><p>Эх төлөвлөлтөд суурилсан<br />AI концепц рендерүүд.</p></div>
+      <div class="collection-summary"><span class="collection-count">15</span><div><strong>өрөө, хэсэг</strong><span>2 давхар · 40 эх зураг</span></div><p>ANO Design-ийн эх зургууд<br />ба өмнөх AI концепц.</p></div>
     </section>
+    <div class="collection-switch" role="group" aria-label="Зургийн хувилбар"><button data-collection="new" class="active" aria-pressed="true">2026 · Шинэ интерьер</button><button data-collection="legacy" aria-pressed="false">Өмнөх AI концепц</button></div>
     <div class="gallery-toolbar">
       <div class="filters" role="group" aria-label="Рендерүүдийг давхраар шүүх">
         <button data-floor="all" class="active" aria-pressed="true">Бүгд <span>15</span></button>
@@ -37,12 +38,13 @@
     </div>
     <div id="gallery"><p class="loading-message" role="status">Рендерүүдийг бэлдэж байна…</p></div>
     <noscript><p class="load-error">Галерейг үзэхийн тулд хөтөчийн JavaScript-ийг идэвхжүүлнэ үү.</p></noscript>
-    <aside class="concept-note"><span class="note-mark" aria-hidden="true">i</span><p>Эдгээр зураг нь эхний тавилгын төлөвлөлтийн өнгө, материалын санааг харуулна. 3D студид тавилга өөрчлөхөд зургууд автоматаар шинэчлэгдэхгүй. Хэмжээс авах CAD зураг биш.</p></aside>
+    <aside class="concept-note"><span class="note-mark" aria-hidden="true">i</span><p>Эх зургууд: хэрэглэгчийн өгсөн «SELEH inteiror.pdf», ANO Design. 10 өрөө, хэсгийн 40 дүрслэлийг зохиогчийн тэмдэглэгээтэй нь оруулав. Үлдсэн 5 хэсэгт өмнөх AI концепцийг тусгай шошготой харуулна. 3D студид тавилга өөрчлөхөд зургууд автоматаар шинэчлэгдэхгүй. Хэмжээс авах CAD зураг биш.</p></aside>
   </main>
   <footer><span>СЭЛБЭ · ГЭР БҮЛИЙН СУУЦ</span><a href="./">Тавилгын байрлалаа 3D-д турших <span aria-hidden="true">↗</span></a></footer>
   <dialog id="lightbox" aria-labelledby="render-title">
     <div class="lightbox-top"><span id="render-counter"></span><button id="close-render" class="icon-button" aria-label="Зургийг хаах" title="Хаах (Esc)">×</button></div>
     <div class="lightbox-image-wrap"><img id="render-image" alt="" /><p id="image-error" hidden>Зургийг ачаалж чадсангүй. Дахин ачаалаад үзээрэй.</p><button id="previous-render" class="image-nav previous" aria-label="Өмнөх зураг" title="Өмнөх зураг (←)">←</button><button id="next-render" class="image-nav next" aria-label="Дараах зураг" title="Дараах зураг (→)">→</button></div>
+    <div id="view-strip" class="view-strip" aria-label="Өрөөний бусад өнцөг"></div>
     <div class="lightbox-caption"><div><p id="render-meta" class="eyebrow"></p><h2 id="render-title"></h2><p id="render-description"></p></div><a id="download-render" class="download-button" download><span aria-hidden="true">↓</span>Зураг татах</a></div>
   </dialog>
 </body>

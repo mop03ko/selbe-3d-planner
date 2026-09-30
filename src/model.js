@@ -1,5 +1,6 @@
 import {ROOMS,CATALOG,THEMES,initialLayout,wallsFor} from './data.js';
-export const STORE_KEY='selbe-layout-v1';
+export const LEGACY_STORE_KEY='selbe-layout-v1';
+export const STORE_KEY='selbe-layout-2026-01';
 export function pointInPoly(x,z,poly){
  let inside=false;
  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
@@ -44,7 +45,7 @@ export function validateLayout(raw){
   if(i.color&&!hex.test(i.color))throw Error('Өнгө буруу байна.');ids.add(i.id);
   return {id:i.id,room:i.room,floor:i.floor,type:i.type,label:i.label,x:i.x,z:i.z,w:i.w,d:i.d,h:i.h,rotation:((i.rotation%360)+360)%360,locked:!!i.locked,...(i.color?{color:i.color}:{})};
  });
- const surfaces={};for(const r of ROOMS){const s=raw.surfaces?.[r.id];if(!s||!hex.test(s.wall)||!['oak','ash','walnut','tile','deck'].includes(s.floor))throw Error('Өрөөний материалын мэдээлэл дутуу.');surfaces[r.id]={wall:s.wall,floor:s.floor};}
+ const surfaces={};for(const r of ROOMS){const s=raw.surfaces?.[r.id];if(!s||!hex.test(s.wall)||!['oak','ash','walnut','tile','deck','herringbone'].includes(s.floor))throw Error('Өрөөний материалын мэдээлэл дутуу.');surfaces[r.id]={wall:s.wall,floor:s.floor};}
  return {version:1,theme:raw.theme,items,surfaces};
 }
 export function loadLayout(storage){try{const raw=storage.getItem(STORE_KEY);return raw?validateLayout(JSON.parse(raw)):initialLayout();}catch{return initialLayout();}}

@@ -14,6 +14,16 @@ function texture(type){
  if(type==='tile'){
   ctx.fillStyle=pal[1];ctx.fillRect(2,2,253,253);ctx.fillRect(258,258,253,253);ctx.strokeStyle='#b7b7ae';ctx.lineWidth=2;
   for(let i=0;i<=512;i+=256){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,512);ctx.moveTo(0,i);ctx.lineTo(512,i);ctx.stroke();}
+ }else if(type==='herringbone'){
+  ctx.save();ctx.translate(256,256);ctx.rotate(Math.PI/4);ctx.scale(512/(32*6*Math.SQRT2),512/(32*6*Math.SQRT2));
+  for(let i=-24;i<24;i++)for(let j=-8;j<8;j++){
+   const x=(i+j*3)*32,y=(-i+j*3)*32;
+   for(const [dx,dy,w,h] of [[x,y,96,32],[x+96,y,32,96]]){
+    ctx.fillStyle=['#cbb391','#bba07c','#c2a984','#d2bb9b'][Math.floor(rand()*4)];ctx.fillRect(dx,dy,w,h);
+    ctx.strokeStyle='rgba(91,68,42,.24)';ctx.lineWidth=.8;ctx.strokeRect(dx,dy,w,h);
+    ctx.strokeStyle='rgba(110,80,40,.09)';for(let k=1;k<5;k++){ctx.beginPath();ctx.moveTo(dx+(w>h?0:k*6),dy+(w>h?k*6:0));ctx.lineTo(dx+(w>h?w:k*6),dy+(w>h?k*6:h));ctx.stroke();}
+   }
+  }ctx.restore();
  }else if(type==='fabric'){
   for(let i=0;i<512;i+=3){ctx.strokeStyle=i%2?'#dedbd5':'#c9c6bf';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,512);ctx.moveTo(0,i);ctx.lineTo(512,i);ctx.stroke();}
  }else{
@@ -22,7 +32,7 @@ function texture(type){
    const y=90+(i*197)%390;ctx.strokeStyle='rgba(71,52,36,.13)';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+64,y);ctx.stroke();
   }
  }
- const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(type==='tile'?.65:.55,type==='tile'?.65:.3);t.anisotropy=4;texCache.set(type,t);return t;
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(type==='tile'?.65:.55,type==='tile'?.65:.3);if(type==='herringbone')t.repeat.set(.65,.65);t.anisotropy=4;texCache.set(type,t);return t;
 }
 function material(color,roughness=.8,map){return new THREE.MeshStandardMaterial({color,roughness,map:map?texture(map):null});}
 function part(group,x,y,z,w,h,d,mat,round=0){
@@ -67,17 +77,17 @@ function furniture(item,theme){
   part(g,0,.25,0,w,.5,d,wood,.025);part(g,0,.54,0,.5,.05,.20,dark);part(g,0,1.02,-.02,w*.87,.82,.04,dark,.015);part(g,0,1.02,.006,w*.84,.76,.008,material('#2d3b3a',.22));break;}
  case 'rug':part(g,0,.017,0,w,.025,d,fabric,.02);break;
  case 'kitchen':{
-  const fridge=Math.min(.6,w*.17),run=w-fridge;
-  part(g,-w/2+fridge/2,h/2,0,fridge,h,d,base,.013);
-  part(g,-w/2+fridge/2,h*.70,d/2+.012,fridge-.025,h*.58,.02,base,.008);part(g,-w/2+fridge/2,h*.195,d/2+.012,fridge-.025,h*.37,.02,base,.008);
+  const fridge=Math.min(theme.upper?.8:.6,w*.23),run=w-fridge,upper=material(theme.upper||col,.65),fridgeMat=theme.upper?metal:base;
+  part(g,-w/2+fridge/2,h/2,0,fridge,h,d,fridgeMat,.013);
+  part(g,-w/2+fridge/2,h*.70,d/2+.012,fridge-.025,h*.58,.02,fridgeMat,.008);part(g,-w/2+fridge/2,h*.195,d/2+.012,fridge-.025,h*.37,.02,fridgeMat,.008);
   part(g,-w/2+fridge-.08,h*.55,d/2+.035,.018,.4,.024,metal,.005);
   const start=-w/2+fridge,top=.90;
   part(g,fridge/2,.43,0,run,.86,d,base,.014);part(g,fridge/2,top-.02,0,run+.015,.055,d+.035,stone,.008);
-  part(g,fridge/2,1.2,-d/2+.01,run,.58,.025,stone);part(g,fridge/2,2.02,-.1,run,.76,d-.2,base,.011);
+  part(g,fridge/2,1.2,-d/2+.01,run,.58,.025,theme.upper?upper:stone);part(g,fridge/2,2.02,-.1,run,.76,d-.2,upper,.011);
   const modules=6,mw=run/modules;
   for(let i=0;i<modules;i++){const x=start+(i+.5)*mw;
    part(g,x,.44,d/2+.008,mw-.012,.79,.018,base,.004);part(g,x,.76,d/2+.026,mw*.33,.012,.02,metal,.004);
-   part(g,x,2.02,d/2-.19,mw-.011,.74,.016,base,.004);
+   part(g,x,2.02,d/2-.19,mw-.011,.74,.016,upper,.004);
   }
   part(g,start+run*.75,top+.005,0,.56,.016,d*.75,dark,.014);for(const dx of [-.14,.14])for(const dz of [-.12,.12])cyl(g,start+run*.75+dx,top+.018,dz,.07,.005,metal);
   part(g,start+run*.75,.47,d/2+.035,.55,.51,.026,dark,.016);part(g,start+run*.75,.48,d/2+.052,.45,.35,.012,material('#46524c',.2));
@@ -132,7 +142,7 @@ export class PlannerScene{
   this.select(this.selected);
  }
  buildArchitecture(){
-  const theme=THEMES[this.layout.theme],f=this.floor,wallH=this.fullWalls?3:.48;
+  const theme=THEMES[this.layout.theme],f=this.floor,wallH=this.fullWalls?(f===0?2.7:2.8):.48;
   const shape=floorShape(FLOOR_OUTLINES[f]);
   if(f===1){const hole=floorShape([[.10,3.6],[3.8,3.6],[3.8,5.8],[.1,5.8]]);shape.holes.push(hole);}
   const base=new THREE.Mesh(new THREE.ExtrudeGeometry(shape,{depth:.16,bevelEnabled:false}),material('#c4c5b9'));base.rotation.x=-Math.PI/2;base.position.y=-.16;base.receiveShadow=true;this.arch.add(base);
@@ -159,7 +169,7 @@ export class PlannerScene{
     const x=wall.a[0]+ux*(o.s+o.e)/2,z=wall.a[1]+uz*(o.s+o.e)/2,width=o.e-o.s;
     if(this.fullWalls&&o.type==='window'){
      const g=new THREE.Group();g.position.set(x,o.sill,z);g.rotation.y=-Math.atan2(uz,ux);this.arch.add(g);
-     const frame=material('#626d64',.5);for(const dx of [-width/2,width/2,0])part(g,dx,o.h/2,0,.035,o.h,.07,frame);
+     const frame=material('#292a29',.5);for(const dx of [-width/2,width/2,0])part(g,dx,o.h/2,0,.035,o.h,.07,frame);
      for(const yy of [0,o.h])part(g,0,yy,0,width,.035,.07,frame);
      const glass=new THREE.Mesh(new THREE.BoxGeometry(width-.04,o.h-.04,.015),new THREE.MeshPhysicalMaterial({color:'#b6d0ce',transparent:true,opacity:.18,roughness:.1,metalness:.0,depthWrite:false}));glass.position.y=o.h/2;g.add(glass);
     }else if(o.type==='window'){
@@ -175,19 +185,30 @@ export class PlannerScene{
    }
   }
   this.stairs();
-  const chimneyH=this.fullWalls?3:1.1;
-  part(this.arch,2.2,chimneyH/2,6.225,1.6,chimneyH,.4,material('#aea89a'),.014);
+  if(this.layout.theme==='ano2026'){
+   if(f===1)part(this.arch,7.675,(this.fullWalls?2.8:1.05)/2,5.85,2.25,this.fullWalls?2.8:1.05,.1,material(theme.wood));
+   // Open coffer beams keep the model visible from above; no opaque ceiling slab.
+   if(f===0&&this.fullWalls){
+    const beam=material(theme.wood,.8);
+    for(const z of [6.12,7.9,9.65,11.5])part(this.arch,2.3,2.61,z,4.6,.18,.13,beam);
+    for(const x of [.1,2.3,4.5])part(this.arch,x,2.61,8.8,.13,.18,5.5,beam);
+    for(const z of [5.32,7.4,9.5])part(this.arch,7.65,2.61,z,3.9,.18,.13,beam);
+    for(const x of [5.8,7.65,9.5])part(this.arch,x,2.61,7.4,.13,.18,4.2,beam);
+   }
+  }
+  const chimneyH=this.fullWalls?(f===0?2.7:2.8):1.1;
+  part(this.arch,2.2,chimneyH/2,6.225,1.6,chimneyH,.4,material('#e9e2d7'),.014);
   if(f===0){part(this.arch,2.2,.48,6.435,1.2,.56,.028,material('#333d36'),.018);part(this.arch,2.2,.33,6.455,.8,.06,.014,material('#c18a47'));}
  }
  addRailing(room){
   const railing=new THREE.Group();this.arch.add(railing);const mat=material('#68776c');
-  const edges=room.id==='balcony'?[[[-.35,10.05],[-.35,11.95]],[[-.35,11.95],[4.95,11.95]],[[4.95,10.05],[4.95,11.95]]]:[[[12.15,-.35],[12.15,13.85]],[[-.35,13.85],[12.15,13.85]]];
+  const edges=room.id==='balcony'?[[[-.35,6.025],[-.35,11.95]],[[-.35,11.95],[4.83,11.95]],[[4.83,9.83],[4.83,11.95]]]:[[[12.15,-.35],[12.15,13.85]],[[-.35,13.85],[12.15,13.85]]];
   for(const [a,b] of edges){const len=Math.hypot(b[0]-a[0],b[1]-a[1]),n=Math.ceil(len/.9);for(let i=0;i<=n;i++){const t=i/n;part(railing,a[0]+(b[0]-a[0])*t,.46,a[1]+(b[1]-a[1])*t,.025,.92,.025,mat);}
    const beam=part(railing,(a[0]+b[0])/2,.92,(a[1]+b[1])/2,len,.032,.04,mat);beam.rotation.y=-Math.atan2(b[1]-a[1],b[0]-a[0]);
   }
  }
  stairs(){
-  const offset=this.floor===1?-3:0,mat=material('#b5a48b');
+  const offset=this.floor===1?-3:0,mat=material('#e6ded0');
   for(let i=0;i<8;i++){
    const h=(i+1)*.1875;part(this.arch,3.73-i*.34,offset+h/2,5.28,.34,h,1.13,mat);
    const h2=1.5+(i+1)*.1875;part(this.arch,1.35+i*.34,offset+h2/2,4.1,.34,h2,1.13,mat);
@@ -206,8 +227,9 @@ export class PlannerScene{
   if(this.view==='inside'&&room){const bounds=room.poly.reduce((b,p)=>[Math.min(b[0],p[0]),Math.min(b[1],p[1]),Math.max(b[2],p[0]),Math.max(b[3],p[1])],[Infinity,Infinity,-Infinity,-Infinity]);
    // Choose an interior point near the lower edge, then look into the selected room.
    let pos=[center[0],center[1]+.7];for(const p of [[bounds[2]-.45,bounds[3]-.45],[bounds[0]+.45,bounds[3]-.45],pos])if(pointInPoly(...p,room.poly)){pos=p;break;}
-   const target=room.id==='master'?[7.5,5.8]:center;
+   const target=room.id==='master'?[7.5,5.8]:room.id==='kitchen'?[7.6,5.65]:center;
    if(room.id==='master')pos=[9.05,8.7];
+   if(room.id==='kitchen')pos=[5.05,9.1];
    this.camera.position.set(pos[0],1.65,pos[1]);this.controls.target.set(target[0],1.15,target[1]);this.controls.maxPolarAngle=Math.PI*.73;
   }else{
    this.controls.maxPolarAngle=Math.PI*.49;
